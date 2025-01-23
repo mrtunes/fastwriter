@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dangerous Writing App</title>
+    <title>Morning Page Writer</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -35,16 +35,17 @@
 </head>
 <body>
     <div id="container">
-        <h1>Dangerous Writing App</h1>
+        <h1>Morning Page Writer</h1>
+        <p id="descript">Type everything on your mind. If you stop the writing will disappear. Copy and paste quickly when done. </p>
         <div id="timer">Time Left: 5 seconds</div>
         <div id="status">Start typing!</div>
         <textarea id="writeArea" placeholder="Start writing..."></textarea>
     </div>
-
     <script>
         const writeArea = document.getElementById('writeArea');
         const timerDisplay = document.getElementById('timer');
         const statusDisplay = document.getElementById('status');
+        const descriptionParagraph = document.getElementById('descript');
         const TYPING_GRACE_PERIOD = 5; // seconds
         
         let typingTimer;
@@ -62,6 +63,8 @@
         }
 
         writeArea.addEventListener('input', () => {
+            // Hide description on first input
+            descriptionParagraph.style.display = 'none';
             statusDisplay.textContent = 'Keep writing!';
             statusDisplay.style.color = 'green';
             resetTimer();
